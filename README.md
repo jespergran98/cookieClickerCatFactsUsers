@@ -126,3 +126,27 @@ Farger: mørk blå bakgrunn med 3 lysere blå "kort", bruk beige/cookie som seco
 Cookie Clicker: basic cookie med counter over.
 Cat Facts: Shows a random list of 5 cat facts, every 10th click on the cookie clicker a fact disappears and a new one appears.
 Users: A third totally unrelated component that has usernames and emails, with the ability to add new users with useState.
+
+---
+
+File structure:
+
+```
+cookie-clicker/
+├── public/
+│   └── assets/
+│       └── cookie.png
+├── src/
+│   ├── components/
+│   │   ├── CookieClicker.jsx
+│   │   └── CookieClicker.css
+│   ├── App.jsx
+│   ├── App.css
+│   ├── main.jsx
+│   └── index.css
+├── index.html
+├── package.json
+└── vite.config.js
+```
+
+---
