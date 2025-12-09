@@ -37,46 +37,32 @@ const CatFacts = ({ clickCount }) => {
   }, [])
 
   // Handle every 10th click
+// Handle every 10th click
   useEffect(() => {
-    const clicksInTens = Math.floor(clickCount / 10)
-    const lastClicksInTens = Math.floor(lastProcessedClick / 10)
-    
-    if (clickCount > 0 && clicksInTens > lastClicksInTens) {
-      let isMounted = true
-
+    if (clickCount > 0 && clickCount % 10 === 0 && clickCount !== lastProcessedClick) {
       const rotateFacts = async () => {
         try {
-          // Animate out the last fact
-          if (isMounted) {
-            setAnimatingOut(true)
-          }
-          
-          // Wait for animation
-          await new Promise(resolve => setTimeout(resolve, 500))
-          
-          // Fetch new fact
+          // Fetch new fact first
           const response = await fetch('https://catfact.ninja/fact')
           const data = await response.json()
           
-          // Remove last fact and add new one at the top
-          if (isMounted) {
-            setFacts(prevFacts => [data, ...prevFacts.slice(0, 4)])
-            setAnimatingOut(false)
-            setLastProcessedClick(clickCount)
-          }
+          // Trigger exit animation
+          setAnimatingOut(true)
+          
+          // Wait for animation to complete
+          await new Promise(resolve => setTimeout(resolve, 600))
+          
+          // Update facts: remove last, add new at top
+          setFacts(prevFacts => [data, ...prevFacts.slice(0, 4)])
+          setAnimatingOut(false)
+          setLastProcessedClick(clickCount)
         } catch (err) {
           console.error('Failed to fetch new fact:', err)
-          if (isMounted) {
-            setAnimatingOut(false)
-          }
+          setAnimatingOut(false)
         }
       }
 
       rotateFacts()
-
-      return () => {
-        isMounted = false
-      }
     }
   }, [clickCount, lastProcessedClick])
 
