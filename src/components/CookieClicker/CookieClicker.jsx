@@ -14,6 +14,8 @@ const CookieClicker = ({ onCountChange }) => {
 
   return (
     <div className="cookie-card">
+      <h2 className="cookie-title">Cookie Clicker</h2>
+      
       <div className="counter">
         <span className="counter-number">{count.toLocaleString()}</span>
       </div>

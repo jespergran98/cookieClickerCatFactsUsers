@@ -101,7 +101,7 @@ const CatFacts = ({ clickCount }) => {
   return (
     <div className="cat-facts-card">
       <h2 className="cat-facts-title">Cat Facts</h2>
-      <p className="cat-facts-subtitle">New fact every 10 clicks!</p>
+      <p className="cat-facts-subtitle">New fact every 10 cookie clicks!</p>
       
       <div className="facts-container">
         {facts.map((fact, index) => (
