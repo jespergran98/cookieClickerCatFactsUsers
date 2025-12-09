@@ -26,7 +26,7 @@ const CookieClicker = ({ onCountChange }) => {
         aria-label="Click cookie"
       >
         <img 
-          src="/assets/cookie.png" 
+          src="./assets/cookie.png" 
           alt="Cookie" 
           className="cookie-image"
         />
