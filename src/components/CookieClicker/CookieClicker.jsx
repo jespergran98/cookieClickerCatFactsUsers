@@ -1,11 +1,15 @@
 import { useState } from 'react'
 import './CookieClicker.css'
 
-const CookieClicker = () => {
+const CookieClicker = ({ onCountChange }) => {
   const [count, setCount] = useState(0)
 
   const handleCookieClick = () => {
-    setCount(count + 1)
+    const newCount = count + 1
+    setCount(newCount)
+    if (onCountChange) {
+      onCountChange(newCount)
+    }
   }
 
   return (
